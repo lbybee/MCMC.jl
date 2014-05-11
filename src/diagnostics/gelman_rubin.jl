@@ -4,7 +4,7 @@ function gelman_rubin(traces)
     
     m = size(traces)[1]
     
-    if m < 2:
+    if m < 2
         return "NA"
     end
 
@@ -25,7 +25,8 @@ function gelman_rubin(traces)
     end
 
     if dim > 1
-        return [gelman_rubin([a[:,i] for a in traces]) for i in 1:dim]
+        return [gelman_rubin([a[:,i] for a in traces]) for i = 1:dim]
+    end
 
     var_array = [var(a) for a in traces]
     mean_array = [mean(a) for a in traces]
@@ -40,3 +41,4 @@ function gelman_rubin(traces)
     R = sqrt(pVar / W)
 
     return R
+end
